@@ -1,0 +1,6 @@
+<form>
+<div class=""><h3>Subject :</h3><h4><%= @title %></h4></div>
+<h4>Sent By:</h4><h5><a href="/users/<%= @message.sender_id %>"><%= User.find(@message.sender_id).name %></a></h5>
+<h3>Body :</h3>
+<p><%= @message.content %> </p>
+</form>

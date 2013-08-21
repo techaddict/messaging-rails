@@ -1,0 +1,17 @@
+<h3>User</h3>
+<p>Params:<%= params[:id] %> </p>
+<p>current_user:<%= current_user.id %> </p>
+<% if (current_user.id != params[:id].to_i) %>
+	<%= form_for current_user.sent_messages.create, url:"../message" do |f| %>
+		<% session[:reciever_id] = params[:id] %>
+		<div><%= f.hidden_field :reciever_id %></div>
+		<%= f.submit "Send Message" %>
+	<% end %>
+<%end %>
+
+<p>User: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Phone No.: <%= @user.phone if @user.phone %></p>
+<p>House No.: <%= @user.houseno if @user.houseno %></p>
+<p>Address Line 1: <%= @user.addline1 if @user.addline1 %></p>
+<p>Address Line 2: <%= @user.addline2 if @user.addline2 %></p>

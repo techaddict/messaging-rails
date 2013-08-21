@@ -1,0 +1,16 @@
+<h1>send Message</h1>
+<%= @message.reciever_id %>
+<%= @message.sender_id %>
+<% form_for(@message) do |f| %>
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.check_box :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
