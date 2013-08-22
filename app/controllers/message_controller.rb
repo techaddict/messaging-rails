@@ -30,15 +30,15 @@ class MessageController < ApplicationController
     @message.sender_id = current_user.id
     phone_regex = /[789]\d{9}/
     email_regex = /[a-z\d\.\_\%\+\-]+(\[at\]|@)+[a-z\d\.\-]+(\[\.\]|\.)+[a-z]{2,4}/ #email[at]gmail[.]com
+    @u = User.find(@message.sender_id)
     if !phone_regex.match(@message.content) && !email_regex.match(@message.content) && @message.reciever_id.to_i != 0
-    	if @message.save
+      if @message.save
     		flash[:notice] = "Message has been sent"
-    		#redirect_to user_messages_path(current_user, outbox)
       else
         render :action => :new
       end
   	else
-      flash[:notice] = "Email and Phone Number not allowed"
+      flash[:notice] = "Email Id's, Phone Number and Address are not allowed"
   		render :action => :new
   	end
     @message.reciever_id=0
